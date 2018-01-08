@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../../static/miniui/themes/default/miniui.css">
+  <script src="../../static/jquery.min.js"></script>
+  <script src="../../static/miniui/miniui.js"></script>
+</head>
+<body>
+<div>
+  <div class="mini-toolbar WsdEditToolBar" >
+    <table style="width: 100%;">
+      <tr>
+        <td>
+          <a class="mini-button" iconcls="icon-add" id="_BasiAdd" plain="true" onclick="AddClick">新增</a>
+          <a class="mini-button" iconcls="icon-edit" id="_BasicEdit" plain="true" onclick="EditClick">编辑</a>
+          <a class="mini-button" iconcls="icon-remove" id="_BasicDelete" plain="true" onclick="DeleteClick">删除</a>
+          <a class="mini-button" iconcls="icon-edit" id="_BasicChanged" plain="true" onclick="ChangedClick">调整</a>
+          <a class="mini-button" iconcls="icon-ok" id="_BasicUsed" plain="true" onclick="UsedClick">启用</a>
+          <a class="mini-button" iconcls="icon-undo" id="_BasicUnUsed" plain="true" onclick="UnUsedClick">停用</a>
+          <a class="mini-button" iconcls="icon-print" id="_BasicPrint" plain="true" onclick="PrintClick">打印</a>
+          <!--<a class="mini-button" iconcls="icon-add" id="_BasicBom" plain="true" onclick="SendClick">发送周计划</a>-->
+          <!--<a class="mini-button" iconcls="icon-add" id="_BasicWeek" plain="true" onclick="WeekClick">生成周计划</a>
+
+          <a class="mini-button" iconcls="icon-add" id="_BasicWeekMat" plain="true" onclick="WeekMatClick">周计划生成规则</a>-->
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="mini-fit" id="sFit">
+    <div class="mini-splitter" vertical="true" style="width: 100%; height: 100%;" allowresize="true" id="mmZone">
+      <div size="20%">
+        <div id="wg_month" class="wsddatagrid" style="width: 100%; height: 100%;" allowSortColumn="true"
+             idfield="ID" selectonload="true" pagesize="20"  sortfield="PlanCode"
+             showpagesize="false" showpageindex="true" showpager="true" allowresize="false"
+             allowresize="true" data-options="{beanId:'MonProdRequestBean', method:'LoadData'}">
+          <div property="columns">
+            <div field="PlanCode" width="100" headeralign="center" allowsort="true" align="center">计划编号</div>
+            <div field="Year" width="70" headeralign="center" allowsort="true" align="center">年度</div>
+            <div field="Month" width="70" headeralign="center" allowsort="true" align="center">月份</div>
+            <div field="StartDate" width="100" headeralign="center" align="center" allowsort="true" dateformat="yyyy-MM-dd">开始日期</div>
+            <div field="FinishDate" width="100" headeralign="center" align="center" allowsort="true" dateformat="yyyy-MM-dd">结束日期</div>
+            <div field="VersionCode" width="70" headeralign="center" align="center" allowsort="true">版本号</div>
+            <div field="CreatedTime" width="100" headeralign="center" align="center" allowsort="true" dateformat="yyyy-MM-dd">建立时间</div>
+
+            <div field="CodeStatus" width="100" renderer="OnRenderer" headeralign="center" allowsort="true" align="center">状态</div>
+          </div>
+        </div>
+      </div>
+      <div size="80%">
+        <div class="mini-tabs" activeIndex="0" style="width:100%; height: 100%;">
+          <div title="月度生产计划">
+            <div id="tab_month" class="wsddatagrid" style="width: 100%; height: 100%;"
+                 idfield="ID" showpagesize="10" showpageindex="1" showpager="false"
+                 selectonload="true"  allowresize="false" data-options="{beanId:'MonProdRequestBean',method:'LoadMonthDetails'}">
+              <div property="columns">
+                <div field="MatName" width="100" headeralign="center" align="center">牌号</div>
+                <div field="PlanOutput" width="70" headeralign="center" align="center">计划数量</div>
+                <div field="UomName" width="70" headeralign="center" align="center">计量单位</div>
+                <div field="LineAreaName" width="100" headeralign="center" align="center">生产线/区域</div>
+                <div field="WorkSequence" width="70" headeralign="center" align="center">生产次序</div>
+                <div field="PlanStartDate" width="100" headeralign="center" align="center" dateformat="yyyy-MM-dd">计划开始日期</div>
+                <div field="PlanFinishDate" width="100" headeralign="center" align="center" dateformat="yyyy-MM-dd">计划结束日期</div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
