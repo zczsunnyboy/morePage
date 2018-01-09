@@ -1,1 +1,160 @@
 @import "common";
+
+@NavBigheight:68px;
+@NavSmallheight:30px;
+@NavIconwidth:88px;
+@iconconfig:22px;
+@formRowheight:24px;
+
+/***************icon-nav*******************/
+.mini-toolbar{
+  height: @NavBigheight;
+  border: none;
+  padding: 0;
+  background: none;
+  margin: 8px 0 12px 0;
+}
+body .mini-button-plain,.mini-button .mini-button-icon-text{
+  padding: 0;
+}
+.mini-button{
+  color: @Navfontcolor;
+}
+.nav-button{
+  line-height: @NavBigheight;
+  width: @NavIconwidth;
+}
+body a:hover.mini-button{
+  border: none;
+  background: @NavfontHovercolor;
+}
+
+.mini-button .mini-button-icon-text{
+  top: 10px;
+}
+#point{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 5px;
+  top: 20px;
+  background: url("../img/point.png");
+  cursor: pointer;
+  display: none;
+}
+/***********************************************/
+
+/*************icon*************/
+.nav-button .mini-button-icon{
+  width: @iconconfig;
+  height: @iconconfig;
+  margin-top: -35px;
+  left: 3px;
+}
+.icon-add{
+  background: url("../img/add_blue.png");
+}
+.icon-edit{
+  background: url("../img/edit_blue.png");
+}
+.icon-remove{
+  background: url("../img/delete_blue.png");
+}
+.icon-ok{
+  background: url("../img/start_blue.png");
+}
+.icon-undo{
+  background: url("../img/end_blue.png");
+}
+.icon-print{
+  background: url("../img/print_blue.png");
+}
+/*****************************/
+
+
+/**********************form*************************/
+.mini-panel,.mini-popup{
+  color:@formfontcolor;
+}
+.mini-splitter-pane1-vertical{
+  border: 0;
+}
+.mini-panel-border{
+  border-color: @formOutline;
+}
+.mini-grid-cell,.mini-grid-headerCell,.mini-popup{
+  border-color: @formInline;
+}
+.mini-grid-pager{
+  border-top:none ;
+}
+.mini-grid-row{
+  background: @formRowcolor;
+}
+.mini-grid-row:hover{
+  background: @formRowhovercolor;
+}
+.mini-grid-headerCell,.mini-grid-pager{
+  background: @formNavcolor;
+}
+.mini-pager-right{
+  font-size: 13px;
+}
+.mini-grid-cell{
+  height: 36px;
+}
+
+
+
+.mini-pager-size{
+  margin-left: 10px;
+}
+.mini-buttonedit-button-hover,.mini-buttonedit-hover .mini-buttonedit-trigger,.mini-buttonedit-button-pressed, .mini-buttonedit-popup .mini-buttonedit-trigger{
+  background: @formRowhovercolor;
+  border-color: transparent;
+}
+.mini-listbox-item-selected{
+  background: @formRowintercolor;
+}
+
+.mini-button-icon{
+  width: 22px;
+}
+.mini-pager-first{
+  background: url("../img/all_last.png");
+}
+.mini-pager-prev{
+  background: url("../img/last.png");
+}
+.mini-pager-next{
+  background: url("../img/next.png");
+}
+.mini-pager-last{
+  background: url("../img/all_next.png");
+}
+.mini-pager-reload{
+  background: url("../img/reload.png");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

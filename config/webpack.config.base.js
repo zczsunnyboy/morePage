@@ -109,6 +109,7 @@ module.exports = {
                     options:{
                         // 打包生成图片的名字
                         name:"[name].[ext]",
+                        useRelativePath:true,
                         // 图片的生成路径
                         outputPath:config.imgOutputPath
                     }
@@ -117,6 +118,10 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use:["file-loader"]
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
             }
         ],
     },

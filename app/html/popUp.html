@@ -8,6 +8,113 @@
   <script src="../../static/miniui/miniui.js"></script>
 </head>
 <body>
+<div style="width: 50%;margin: auto;border: 1px solid #ddd;margin-top: 20px">
+  <h1 class="titleFont">Form-demo</h1>
 
+  <div id="form1">
+    <input name="id" class="mini-hidden" />
+    <table class="content">
+      <tr>
+        <td>
+          <label for="textbox1$text">TextBox：</label>
+        </td>
+        <td>
+          <input id="textbox1"  name="username" class="mini-textbox asLabel" readOnly="true" value="textbox" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="pwd1$text">Password：</label>
+        </td>
+        <td>
+          <input id="pwd1" name="Pwd" class="mini-password" required="true" value="password"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="textarea1$text">TextArea：</label>
+        </td>
+        <td>
+          <input id="textarea1" name="Area" class="mini-textarea" required="true" value="textarea"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="date1$text">DatePicker：</label>
+        </td>
+        <td>
+          <input id="date1" name="BirthDay" class="mini-datepicker" value="2010-10-12" required="true" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">Spinner：</label>
+        </td>
+        <td>
+          <input name="Age" class="mini-spinner" value="22" minValue="10" maxValue="50" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">TimeSpinner：</label>
+        </td>
+        <td>
+          <input name="Time" class="mini-timespinner" format="H:mm" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">ComboBox：</label>
+        </td>
+        <td>
+          <input name="Country" showNullItem="true" class="mini-combobox" url="/demo/data/countrys.txt" value="cn" textField="text" valueField="id" />
+          <br />
+          <span id="combobox_error" style="color:Red;"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">TreeSelect：</label>
+        </td>
+        <td>
+          <input name="TreeSelect"  class="mini-treeselect" url="/demo/data/listTree.txt" multiSelect="true"
+                 textField="text" valueField="id" parentField="pid" checkRecursive="true"
+                 value="ajax,button"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">AutoComplete：</label>
+        </td>
+        <td>
+          <input id="tbl1" name="tb" class="mini-autocomplete" required="true" style="width:200px;"
+                 valueField="id" textField="text"
+                 url="/demo/data/AjaxService.aspx?method=FilterCountrys2" value="cn" text="中国"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="">TextBoxList：</label>
+        </td>
+        <td>
+          <input id="Text1" class="mini-textboxlist" name="tbl" textName="tblName" required="true" style="width:250px;"
+                 url="/demo/data/AjaxService.aspx?method=FilterCountrys" value="cn,usa" text="中国,美国"
+                 valueField="id" textField="text"/>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input id="onlyRead" value="文本只读模式" class="my-button" type="button"/>
+          <input id="inputRead" value="输入框模式" class="my-button" type="button"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
 </body>
 </html>

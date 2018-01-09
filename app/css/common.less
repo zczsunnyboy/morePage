@@ -1,22 +1,74 @@
 @body-background:#fff;
+@Navfontcolor:#1b678e;
+@NavfontHovercolor:#dbe9f4;
+@fontbodyfamily:'黑体';
+@fontbodysize:15px;
+@formNavcolor:#e7ebee;
+@formOutline:#ccc;
+@formInline:#dbe4e9;
+@formRowcolor:#f4f6f9;
+@formRowhovercolor:#e2ecf5;
+@formRowintercolor:#c8ddf0;
+@formfontcolor:#333;
 
+@scrollBarconfig:9px;
 
-
-
+/********************************/
 body {
   background: @body-background;
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
+  font-family: @fontbodyfamily;
+  font-size: @fontbodysize;
+  color: @formfontcolor;
 }
 .clear{
   clear: both;
 }
+/***********************************/
+
+/***********************滚动条*************************/
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: @scrollBarconfig;
+  height: @scrollBarconfig;
+  background-color: @formRowcolor;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: @scrollBarconfig;
+  background-color: @formRowcolor;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: @scrollBarconfig;
+  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: @formRowcolor;
+}
+/*滑块效果*/
+::-webkit-scrollbar-thumb:hover {
+  //border-radius: 5px;
+  //-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  background: #bdcfd8;
+}
+/*IE滚动条颜色*/
+//html {
+//  scrollbar-face-color:#bfbfbf;/*滚动条颜色*/
+//  scrollbar-highlight-color:#000;
+//  scrollbar-3dlight-color:#000;
+//  scrollbar-darkshadow-color:#000;
+//  scrollbar-Shadow-color:#adadad;/*滑块边色*/
+//  scrollbar-arrow-color:rgba(0,0,0,0.4);/*箭头颜色*/
+//  scrollbar-track-color:#eeeeee;/*背景颜色*/
+//}

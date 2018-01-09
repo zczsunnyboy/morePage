@@ -1,0 +1,96 @@
+@import "common";
+
+/**************************/
+
+/****************************/
+
+/*
+*头部
+*/
+.titleFont{
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+/*
+*内容
+*/
+.content tr{
+  height: 50px;
+}
+.content tr label{
+  margin-left: 5px;
+}
+.mini-required .mini-textbox-border, .mini-required .mini-buttonedit-border,.mini-required .mini-textboxlist-border{
+  background: transparent;
+}
+.mini-textbox-border,
+.mini-buttonedit-border,
+.mini-textboxlist-border{
+  border-color: #ccc;
+}
+.mini-textbox-focus .mini-textbox-border,
+.mini-buttonedit-focus .mini-buttonedit-border,
+.mini-textboxlist-focus .mini-textboxlist-border{
+  border-color: @formRowintercolor;
+}
+
+.mini-popup{
+  border-color: #ddd;
+}
+.mini-buttonedit-button-hover,
+.mini-buttonedit-hover .mini-buttonedit-trigger,
+.mini-buttonedit-button-pressed,
+.mini-buttonedit-popup .mini-buttonedit-trigger{
+  background: @formRowhovercolor;
+  border-color: transparent;
+}
+.mini-listbox-item-selected{
+  background: @formRowintercolor;
+}
+.mini-calendar-header,
+.mini-calendar-footer{
+  background: @formNavcolor;
+  border: none;
+}
+.mini-calendar-tadayButton,
+.mini-calendar-clearButton,
+.mini-calendar-okButton,
+.mini-calendar-cancelButton,
+.my-button{
+  background: #eee;
+  border:none;
+}
+.my-button{
+  cursor: pointer;
+  padding: 10px 15px;
+}
+.mini-calendar-tadayButton:hover,
+.mini-calendar-clearButton:hover,
+.mini-calendar-okButton:hover,
+.mini-calendar-cancelButton:hover,
+.my-button:hover{
+  background: @formRowintercolor;
+}
+
+
+
+.asLabel .mini-textbox-border,
+.asLabel .mini-textbox-input,
+.asLabel .mini-buttonedit-border,
+.asLabel .mini-buttonedit-input,
+.asLabel .mini-textboxlist-border {
+  border-color:transparent;
+  background:none;
+  cursor:default;
+}
+.asLabel .mini-buttonedit-button,
+.asLabel .mini-textboxlist-close {
+  display:none;
+}
+.asLabel .mini-textboxlist-item {
+  padding-right:8px;
+}
