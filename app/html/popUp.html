@@ -8,7 +8,7 @@
   <script src="../../static/miniui/miniui.js"></script>
 </head>
 <body>
-<div style="width: 50%;margin: auto;border: 1px solid #ddd;margin-top: 20px">
+<div id="formpage" style="width: 30%;margin: auto;border: 1px solid #ddd;margin-top: 20px">
   <h1 class="titleFont">Form-demo</h1>
 
   <div id="form1">
@@ -107,12 +107,45 @@
         <td>
           <input id="onlyRead" value="文本只读模式" class="my-button" type="button"/>
           <input id="inputRead" value="输入框模式" class="my-button" type="button"/>
+          <input id="popuptext" value="弹出" class="my-button" type="button"/>
         </td>
       </tr>
     </table>
   </div>
 </div>
-
+<div id="popuppage" style="width: 30%;margin-top: 20px" data-issuse="yes">
+  <div id="employee_grid" class="mini-datagrid" style="width:100%;height:250px;"
+       url="../../static/data.json">
+    <div property="columns">
+      <div field="loginname" width="150" align="center" headerAlign="center">员工帐号</div>
+      <div field="gender" width="60" align="center" headerAlign="center">性别</div>
+      <div field="age" width="60" align="center" headerAlign="center">年龄</div>
+      <div field="birthday" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">出生日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+      <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="annotate" style="text-align: center;color: #999;">注释：以上内容请以Chrome 35及以上版本显示效果为主</div>
 <script type="text/javascript">
 
 </script>

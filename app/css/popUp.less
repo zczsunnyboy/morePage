@@ -1,5 +1,4 @@
 @import "common";
-
 /**************************/
 
 /****************************/
@@ -67,13 +66,33 @@
 .my-button{
   cursor: pointer;
   padding: 10px 15px;
+  margin-bottom: 8px;
+}
+.mini-tree-nodetitle:hover{
+  background: @formRowhovercolor;
 }
 .mini-calendar-tadayButton:hover,
 .mini-calendar-clearButton:hover,
 .mini-calendar-okButton:hover,
 .mini-calendar-cancelButton:hover,
+.mini-tree-expand,
 .my-button:hover{
   background: @formRowintercolor;
+}
+.my-button:focus{
+  outline: none;
+}
+#popuppage{
+  border: 1px solid #ddd;
+  position: absolute;
+  top: 0;
+  display: none;
+}
+
+
+
+.mini-tree-treeLine .mini-tree-node-ecicon{
+  display: none;
 }
 
 
@@ -88,9 +107,13 @@
   cursor:default;
 }
 .asLabel .mini-buttonedit-button,
-.asLabel .mini-textboxlist-close {
+.asLabel .mini-textboxlist-close ,
+.mini-tree-indent {
   display:none;
 }
 .asLabel .mini-textboxlist-item {
   padding-right:8px;
+}
+.mini-grid-table .mini-grid-row{
+  background: #fff;
 }
