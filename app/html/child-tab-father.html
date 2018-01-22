@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../../static/miniui/themes/default/miniui.css">
+  <script src="../../static/jquery.min.js"></script>
+  <script src="../../static/miniui/miniui.js"></script>
+</head>
+<body>
+<div class="mini-toolbar" >
+  <table style="width: 100%;">
+    <tr>
+      <td>
+        <a class="mini-button nav-button" iconcls="icon-add" plain="true">新增</a>
+        <a class="mini-button nav-button" iconcls="icon-edit" plain="true">编辑</a>
+        <a class="mini-button nav-button" iconcls="icon-remove" plain="true">删除</a>
+        <a class="mini-button nav-button" iconcls="icon-edit" plain="true">调整</a>
+        <a class="mini-button nav-button" iconcls="icon-ok" plain="true">启用</a>
+        <a class="mini-button nav-button" iconcls="icon-undo" plain="true">停用</a>
+        <a class="mini-button nav-button" iconcls="icon-print" plain="true">打印</a>
+      </td>
+    </tr>
+  </table>
+  <div id="point" data-staus="no"></div>
+</div>
+
+<div id="datagrid1" class="mini-datagrid" style="width:100%;height:250px;"
+     url="/demo/data/AjaxService.aspx?method=SearchEmployees"  idField="id"
+     onselectionchanged="onSelectionChanged">
+  <div property="columns">
+    <div name="action" width="50" headerAlign="center" align="center" renderer="onActionRenderer" cellStyle="padding:0;">#</div>
+    <div field="loginname" width="120" headerAlign="center" allowSort="true">员工帐号</div>
+    <div field="gender" width="100" allowSort="true" renderer="onGenderRenderer" align="center" headerAlign="center">性别</div>
+    <div field="age" width="100" allowSort="true">年龄</div>
+    <div field="birthday" width="100" allowSort="true" dateFormat="yyyy-MM-dd">出生日期</div>
+    <div field="createtime" width="100" headerAlign="center" dateFormat="yyyy-MM-dd" allowSort="true">创建日期</div>
+  </div>
+</div>
+<br />
+<div id="editForm1" style="width:100%;position:relative;">
+  <div  class="mini-tabs" style="width:100%;" activeIndex="0">
+    <div title="基本信息">
+      <input class="mini-hidden" name="id"/>
+      <table style="width:100%;">
+        <tr>
+          <td style="width:80px;">员工帐号：</td>
+          <td style="width:150px;"><input name="loginname" class="mini-textbox" /></td>
+          <td style="width:80px;">姓名：</td>
+          <td style="width:150px;"><input name="name" class="mini-textbox" /></td>
+          <td style="width:80px;">薪资：</td>
+          <td style="width:150px;"><input name="salary" class="mini-textbox" /></td>
+        </tr>
+        <tr>
+          <td>性别：</td>
+          <td><input name="gender" class="mini-combobox" data="Genders"/></td>
+          <td>年龄：</td>
+          <td><input name="age" class="mini-spinner" minValue="0" maxValue="200" value="25"  /></td>
+          <td>出生日期：</td>
+          <td><input name="birthday" class="mini-datepicker" /></td>
+        </tr>
+
+      </table>
+    </div>
+    <div title="备注">
+      <div id="dept_grid" class="mini-datagrid" style="width:100%;height:180px;"
+           url="../../static/child-father.json"  idField="id"
+           onselectionchanged="onSelectionChanged"
+           selectOnLoad="true">
+        <div property="columns">
+          <div field="id" width="80" align="center" headerAlign="center">ID</div>
+          <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+          <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+          <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+          <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+          <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  let Genders = [{ id: 1, text: '男' }, { id: 2, text: '女'}];
+
+  mini.parse();
+
+  let editForm = document.getElementById("editForm1");
+  let form = new mini.Form("editForm1");
+
+  let dept_grid = mini.get("dept_grid");
+  dept_grid.load();
+
+  let grid = mini.get("datagrid1");
+  grid.load();
+  grid.sortBy("createtime", "desc");
+
+  ///////////////////////////////////////////////////////
+
+  function onGenderRenderer(e) {
+    for (let i = 0, l = Genders.length; i < l; i++) {
+      let g = Genders[i];
+      if (g.id == e.value) return g.text;
+    }
+    return "";
+  }
+
+  function onActionRenderer(e) {
+    let grid = e.sender;
+    let record = e.record;
+    let uid = record._uid;
+    let rowIndex = e.rowIndex;
+
+    let s =  '<a class="Delete_Button" href="javascript:delRow(\'' + uid + '\')">Delete</a>';
+
+    return s;
+  }
+
+  function onSelectionChanged(e) {
+    let grid = e.sender;
+    let record = grid.getSelected();
+    if (record) {
+      editRow(record._uid);
+    } else {
+      form.reset();
+    }
+  }
+
+  function newRow() {
+    let row = {};
+    grid.addRow(row, 0);
+
+    editRow(row._uid);
+  }
+  function editRow(row_uid) {
+    let row = grid.getRowByUID(row_uid);
+    if (row) {
+
+
+      //表单加载员工信息
+      let form = new mini.Form("editForm1");
+      if (grid.isNewRow(row)) {
+        form.reset();
+      } else {
+        form.loading();
+        $.ajax({
+          url: "/demo/data/AjaxService.aspx?method=GetEmployee&id=" + row.id,
+          success: function (text) {
+            let o = mini.decode(text);
+            form.setData(o);
+
+
+
+            form.unmask();
+          }
+        });
+      }
+
+      grid.doLayout();
+    }
+  }
+  function cancelRow() {
+    grid.reload();
+  }
+  function delRow(row_uid) {
+    let row = grid.getRowByUID(row_uid);
+    if (row) {
+      if (confirm("确定删除此记录？")) {
+        grid.loading("删除中，请稍后......");
+        $.ajax({
+          url: "/demo/data/AjaxService.aspx?method=RemoveEmployees&id=" + row.id,
+          success: function (text) {
+            grid.reload();
+          },
+          error: function () {
+          }
+        });
+      }
+    }
+  }
+
+  function updateRow() {
+    let form = new mini.Form("editForm1");
+
+    let o = form.getData();
+
+
+    grid.loading("保存中，请稍后......");
+    let json = mini.encode([o]);
+    $.ajax({
+      url: "/demo/data/AjaxService.aspx?method=SaveEmployees",
+      data: { data: json },
+      success: function (text) {
+        grid.reload();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        alert(jqXHR.responseText);
+      }
+    });
+
+  }
+</script>
+</body>
+</html>

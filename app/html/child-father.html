@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../../static/miniui/themes/default/miniui.css">
+  <script src="../../static/jquery.min.js"></script>
+  <script src="../../static/miniui/miniui.js"></script>
+</head>
+<body>
+<div class="mini-toolbar" >
+  <table style="width: 100%;">
+    <tr>
+      <td>
+        <a class="mini-button nav-button" iconcls="icon-add" plain="true">新增</a>
+        <a class="mini-button nav-button" iconcls="icon-edit" plain="true">编辑</a>
+        <a class="mini-button nav-button" iconcls="icon-remove" plain="true">删除</a>
+        <a class="mini-button nav-button" iconcls="icon-edit" plain="true">调整</a>
+        <a class="mini-button nav-button" iconcls="icon-ok" plain="true">启用</a>
+        <a class="mini-button nav-button" iconcls="icon-undo" plain="true">停用</a>
+        <a class="mini-button nav-button" iconcls="icon-print" plain="true">打印</a>
+      </td>
+    </tr>
+  </table>
+  <div id="point" data-staus="no"></div>
+</div>
+
+<div id="dept_grid" class="mini-datagrid" style="width:100%;height:180px;"
+     url="../../static/child-father.json"  idField="id"
+     onselectionchanged="onSelectionChanged"
+     selectOnLoad="true">
+  <div property="columns">
+    <div field="id" width="80" align="center" headerAlign="center">ID</div>
+    <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+    <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+    <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+    <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+    <div field="name" width="120" align="center" headerAlign="center">部门名称</div>
+  </div>
+</div>
+
+<br />
+<div id="employee_grid" class="mini-datagrid" style="width:100%;height:250px;"
+     url="../../static/data.json">
+  <div property="columns">
+    <div field="loginname" width="150" align="center" headerAlign="center">员工帐号</div>
+    <div field="gender" width="60" align="center" headerAlign="center">性别</div>
+    <div field="age" width="60" align="center" headerAlign="center">年龄</div>
+    <div field="birthday" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">出生日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+    <div field="createtime" width="120" align="center" dateFormat="yyyy-MM-dd" headerAlign="center">创建日期</div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  let Genders = [{ id: 1, text: '男' }, { id: 2, text: '女'}];
+
+  mini.parse();
+
+  let dept_grid = mini.get("dept_grid");
+  let employee_grid = mini.get("employee_grid");
+
+  dept_grid.load();
+
+  ///////////////////////////////////////////////////////
+
+  function onGenderRenderer(e) {
+    for (let i = 0, l = Genders.length; i < l; i++) {
+      let g = Genders[i];
+      if (g.id == e.value) return g.text;
+    }
+    return "";
+  }
+
+
+  function onSelectionChanged(e) {
+
+    let grid = e.sender;
+    let record = grid.getSelected();
+    if (record) {
+      employee_grid.load({ dept_id: record.id });
+    }
+  }
+</script>
+</body>
+</html>
