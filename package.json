@@ -40,7 +40,9 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "easeljs": "^1.0.2",
     "jquery": "^3.2.1",
-    "three": "^0.89.0"
+    "three": "^0.89.0",
+    "vue-easeljs": "^0.1.1"
   }
 }
