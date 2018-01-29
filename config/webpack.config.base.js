@@ -45,16 +45,13 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': resolve('app')
+            '@': resolve('app'),
+            // createjs: path.join(__dirname,'./node_modules') + '/createjs/builds/createjs-2015.11.26.combined.js'
         }
     },
     // 加载器
     module:{
         rules:[
-            {
-                test: path.resolve(__dirname, "../app/lib/miniui/miniui.js"),
-                use: "imports-loader?this=>window"
-            },
             {
               rules: [{
                 test: /\.less$/,
